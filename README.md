@@ -1,36 +1,13 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Tool and Die
 
-## Getting Started
+_Modern Ordering App_
 
-First, run the development server:
+**Built using TypeScript, React JS, Next JS, Next Auth, Dexie, and Formik**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Jobs are currently processed manually, starting with the establishment of a job number. The job supervisor then estimates time and materials, which is time-consuming and prone to delays. Subsequently, the job is scheduled for a specific day and time, with materials orders issued to stores accordingly.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+On the scheduled day, materials orders must be fulfilled, and if materials are unavailable, rescheduling becomes necessary. Time cards are completed by workers in the shop upon fulfilling the work order. These time cards are used for both internal tracking and customer billing, processed manually and entered into the work order.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Work orders undergo accuracy checks and are forwarded to CIS for accounting records update and customer billing. However, the monthly reporting system results in customer inquiries about costs incurred, as real-time information is unavailable. Management lacks visibility into initial estimates' accuracy and work progress on tools, machines, and workers.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This comprehensive application aims to streamline operations, enhancing efficiency and transparency within the Tool and Die Shop.
