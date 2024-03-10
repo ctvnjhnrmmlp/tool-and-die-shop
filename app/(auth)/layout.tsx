@@ -25,7 +25,7 @@ function AuthLayout({
 				</div>
 			</nav>
 
-			<main>{children}</main>
+			<main className='dark text-foreground bg-background'>{children}</main>
 		</>
 	);
 }

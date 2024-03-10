@@ -11,7 +11,7 @@ function CustomersLayout({
 			<Nav />
 			<Sidenav />
 
-			<main className='flex flex-col gap-6 py-12 w-full pl-0 lg:pl-72'>
+			<main className='dark text-foreground bg-background flex flex-col gap-6 py-12 w-full pl-0 lg:pl-72'>
 				{children}
 			</main>
 		</>
