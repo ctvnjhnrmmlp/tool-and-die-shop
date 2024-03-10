@@ -1,4 +1,4 @@
-# Tool and Die
+# Tool and Die Shop
 
 _Modern Ordering App_
 
