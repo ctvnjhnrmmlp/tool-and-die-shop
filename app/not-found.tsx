@@ -6,8 +6,8 @@ import { FaTools } from 'react-icons/fa';
 
 function NotFound() {
 	return (
-		<section className='flex flex-col gap-6 px-4 h-screen justify-center items-center'>
-			<div className='flex flex-col gap-16'>
+		<section className='flex flex-col min-h-screen justify-center items-center duration-300'>
+			<div className='flex flex-col gap-16' id='splash-container'>
 				<div className='flex justify-center'>
 					<p className='text-8xl'>
 						<FaTools />
@@ -15,7 +15,7 @@ function NotFound() {
 				</div>
 				<div className='flex flex-col'>
 					<h1 className='text-6xl sm:text-7xl md:text-8xl lg:text-heading-one-large text-center leading-none font-extrabold'>
-						Page Not Found
+						Not Found
 					</h1>
 				</div>
 				<div className='flex justify-center'>
