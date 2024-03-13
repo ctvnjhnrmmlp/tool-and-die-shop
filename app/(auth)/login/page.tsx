@@ -6,6 +6,9 @@ import { signIn, useSession } from 'next-auth/react';
 import { redirect, useRouter, useSearchParams } from 'next/navigation';
 import { ZodError, z } from 'zod';
 
+import { toolAndDieDatabase } from '@/database/tool-and-die/tool-and-die.database';
+import products from '@/sources/products';
+import { useLiveQuery } from 'dexie-react-hooks';
 import { FaPerson } from 'react-icons/fa6';
 import { MdOutlinePassword } from 'react-icons/md';
 
@@ -16,6 +19,7 @@ function Login() {
 
 	const searchParams = useSearchParams();
 	const router = useRouter();
+	const productList = useLiveQuery(() => toolAndDieDatabase.products.toArray());
 
 	const ValidationSchema = z.object({
 		username: z
@@ -60,7 +64,20 @@ function Login() {
 							callbackUrl,
 						});
 
-						if (!res?.error) router.push(callbackUrl);
+						if (!res?.error) {
+							if (productList?.length == 0) {
+								toolAndDieDatabase.products
+									.bulkPut(products)
+									.then(function () {
+										console.log('Data added successfully!');
+									})
+									.catch(function (error) {
+										console.error('Error adding data: ' + error);
+									});
+							}
+
+							router.push(callbackUrl);
+						}
 					} catch (error) {
 						console.log('Error: ', error);
 					}

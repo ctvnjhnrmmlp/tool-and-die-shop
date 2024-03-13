@@ -3,12 +3,11 @@ interface Product {
 	name: string;
 	src: string;
 	type: string;
-	status:
-		| string
-		| 'pending'
-		| 'requested'
-		| 'confirmed'
-		| 'processing'
-		| 'finalizing'
-		| 'approved';
+	status: string;
+}
+
+interface Notification {
+	id: number;
+	name: string;
+	status: string;
 }

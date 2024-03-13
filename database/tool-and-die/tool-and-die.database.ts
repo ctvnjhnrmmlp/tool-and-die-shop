@@ -9,7 +9,7 @@ export class ToolAndDieDatabase extends Dexie {
 	processes!: Table<Product>;
 	finals!: Table<Product>;
 	approves!: Table<Product>;
-	deliveries!: Table<Product>;
+	notifications!: Table;
 
 	constructor() {
 		super('ToolAndDieDatabase');
@@ -22,7 +22,7 @@ export class ToolAndDieDatabase extends Dexie {
 			processes: '++id, name, src, type, status',
 			finals: '++id, name, src, type, status',
 			approves: '++id, name, src, type, status',
-			deliveries: '++id, name, src, type, status',
+			notifications: '++id, name, status',
 		});
 	}
 }

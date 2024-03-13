@@ -258,60 +258,6 @@ function Orders() {
 						)}
 				</div>
 
-				{/* <div>
-					{session.user?.name == 'Admin' &&
-						orderList &&
-						orderList?.length >= 1 && (
-							<Modal
-								isDismissable={false}
-								hideCloseButton={true}
-								isOpen={isOpen}
-								onOpenChange={() => onOpenChange()}
-								backdrop='blur'
-								className='bg-black'
-							>
-								<ModalContent>
-									{(onClose) => (
-										<>
-											<ModalHeader className='flex justify-center items-center'>
-												<p className='text-2xl font-bold text-center'>
-													{selectedProduct?.name}
-												</p>
-											</ModalHeader>
-											<ModalBody className='flex items-center'>
-												<Image
-													alt={selectedProduct?.name}
-													className='object-cover'
-													src={`/images/${selectedProduct?.src}`}
-													width={350}
-												/>
-											</ModalBody>
-											<ModalFooter>
-												<Button
-													color='danger'
-													variant='light'
-													onPress={onClose}
-												>
-													Close
-												</Button>
-												<Button
-													onPress={() => {
-														handleRequestProduct();
-														handleDeletePendingProduct();
-														onClose();
-													}}
-													className='bg-white text-black'
-												>
-													Request Product
-												</Button>
-											</ModalFooter>
-										</>
-									)}
-								</ModalContent>
-							</Modal>
-						)}
-				</div> */}
-
 				<div>
 					{session.user?.name == 'Admin' &&
 						orderList &&
@@ -373,60 +319,6 @@ function Orders() {
 						)}
 				</div>
 
-				{/* <div>
-					{session.user?.name == 'Worker' &&
-						requestList &&
-						requestList.length >= 1 && (
-							<Modal
-								isDismissable={false}
-								hideCloseButton={true}
-								isOpen={isOpen}
-								onOpenChange={() => onOpenChange()}
-								backdrop='blur'
-								className='bg-black'
-							>
-								<ModalContent>
-									{(onClose) => (
-										<>
-											<ModalHeader className='flex justify-center items-center'>
-												<p className='text-2xl font-bold text-center'>
-													{selectedProduct?.name}
-												</p>
-											</ModalHeader>
-											<ModalBody className='flex items-center'>
-												<Image
-													alt={selectedProduct?.name}
-													className='object-cover'
-													src={`/images/${selectedProduct?.src}`}
-													width={350}
-												/>
-											</ModalBody>
-											<ModalFooter>
-												<Button
-													color='danger'
-													variant='light'
-													onPress={onClose}
-												>
-													Close
-												</Button>
-												<Button
-													onPress={() => {
-														handleConfirmProduct();
-														handleDeleteRequestedProduct();
-														onClose();
-													}}
-													className='bg-white text-black'
-												>
-													Confirm Product
-												</Button>
-											</ModalFooter>
-										</>
-									)}
-								</ModalContent>
-							</Modal>
-						)}
-				</div> */}
-
 				<div>
 					{session.user?.name == 'Worker' &&
 						requestList &&
@@ -487,60 +379,6 @@ function Orders() {
 							</Modal>
 						)}
 				</div>
-
-				{/* <div>
-					{session.user?.name == 'Admin' &&
-						processList &&
-						processList.length >= 1 && (
-							<Modal
-								isDismissable={false}
-								hideCloseButton={true}
-								isOpen={isOpen}
-								onOpenChange={() => onOpenChange()}
-								backdrop='blur'
-								className='bg-black'
-							>
-								<ModalContent>
-									{(onClose) => (
-										<>
-											<ModalHeader className='flex justify-center items-center'>
-												<p className='text-2xl font-bold text-center'>
-													{selectedProduct?.name}
-												</p>
-											</ModalHeader>
-											<ModalBody className='flex items-center'>
-												<Image
-													alt={selectedProduct?.name}
-													className='object-cover'
-													src={`/images/${selectedProduct?.src}`}
-													width={350}
-												/>
-											</ModalBody>
-											<ModalFooter>
-												<Button
-													color='danger'
-													variant='light'
-													onPress={onClose}
-												>
-													Close
-												</Button>
-												<Button
-													onPress={() => {
-														handleProcessProduct();
-														handleDeleteConfirmedProduct();
-														onClose();
-													}}
-													className='bg-white text-black'
-												>
-													Process Product
-												</Button>
-											</ModalFooter>
-										</>
-									)}
-								</ModalContent>
-							</Modal>
-						)}
-				</div> */}
 
 				<div>
 					{session.user?.name == 'Worker' &&

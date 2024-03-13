@@ -17,7 +17,6 @@ import {
 import CartModel from '@/database/tool-and-die/models/Cart.model';
 import ProductModel from '@/database/tool-and-die/models/Product.model';
 import { toolAndDieDatabase } from '@/database/tool-and-die/tool-and-die.database';
-import products from '@/sources/products';
 import { useLiveQuery } from 'dexie-react-hooks';
 import { useSession } from 'next-auth/react';
 import { redirect } from 'next/navigation';
@@ -33,18 +32,6 @@ function Products() {
 
 	const productList = useLiveQuery(() => toolAndDieDatabase.products.toArray());
 
-	React.useEffect(() => {
-		if (productList?.length == 0)
-			toolAndDieDatabase.products
-				.bulkPut(products)
-				.then(function () {
-					console.log('Data added successfully!');
-				})
-				.catch(function (error) {
-					console.error('Error adding data: ' + error);
-				});
-	}, [productList]);
-
 	const handleSelectProduct = (item: Product) => {
 		setSelectedProduct(() => item);
 	};
@@ -56,15 +43,6 @@ function Products() {
 	const handleDeleteProduct = async () => {
 		if (selectedProduct) await ProductModel.deleteProduct(selectedProduct);
 	};
-
-	// const addProductToCart = React.useCallback(async () => {
-	// 	if (selectedProduct) await toolAndDieDatabase.cart.add(selectedProduct);
-	// }, [selectedProduct]);
-
-	// const removeProduct = React.useCallback(async () => {
-	// 	if (selectedProduct)
-	// 		await toolAndDieDatabase.products.delete(selectedProduct.id);
-	// }, [selectedProduct]);
 
 	return (
 		<section className='min-h-screen px-8'>
