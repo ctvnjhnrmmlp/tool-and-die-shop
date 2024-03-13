@@ -38,7 +38,6 @@ function Sidenav() {
 										</div>
 									</Link>
 								</div>
-
 								<div>
 									<Link href={'/products'}>
 										<div
@@ -58,7 +57,6 @@ function Sidenav() {
 										</div>
 									</Link>
 								</div>
-
 								<div>
 									<Link href={'/cart'}>
 										<div
@@ -77,7 +75,6 @@ function Sidenav() {
 										</div>
 									</Link>
 								</div>
-
 								<div>
 									<Link href={'/orders'}>
 										<div
@@ -97,7 +94,6 @@ function Sidenav() {
 										</div>
 									</Link>
 								</div>
-
 								<div>
 									<Link href={'/payments'}>
 										<div
@@ -140,7 +136,6 @@ function Sidenav() {
 										</div>
 									</Link>
 								</div>
-
 								<div>
 									<Link href={'/orders'}>
 										<div
@@ -152,7 +147,7 @@ function Sidenav() {
 											}}
 										>
 											<p className='text-2xl'>
-												<FaSackDollar />
+												<FaBox />
 											</p>
 											<p className='font-light w-full text-xl text-left'>
 												Orders
@@ -184,7 +179,6 @@ function Sidenav() {
 										</div>
 									</Link>
 								</div>
-
 								<div>
 									<Link href={'/requests'}>
 										<div
@@ -196,7 +190,7 @@ function Sidenav() {
 											}}
 										>
 											<p className='text-2xl'>
-												<FaHome />
+												<FaBox />
 											</p>
 											<p className='font-light w-full text-xl text-left'>
 												Requests

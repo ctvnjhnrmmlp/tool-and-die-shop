@@ -23,6 +23,7 @@ import { MdLogout, MdSunny } from 'react-icons/md';
 import Link from 'next/link';
 import React from 'react';
 import { BsTools } from 'react-icons/bs';
+import { FaSackDollar } from 'react-icons/fa6';
 
 function Nav() {
 	const { data: session } = useSession();
@@ -78,11 +79,6 @@ function Nav() {
 			</NavbarContent>
 
 			<NavbarContent justify='end'>
-				{/* <NavbarItem>
-					<h1 className='text-white text-center hidden sm:block text-xl md:text-2xl font-bold'>
-						{session.user?.name}
-					</h1>
-				</NavbarItem> */}
 				<NavbarItem className='flex'>
 					<Dropdown placement='bottom-end' className='bg-black'>
 						<DropdownTrigger>
@@ -164,7 +160,6 @@ function Nav() {
 										Products
 									</p>
 								</div>
-								cart
 							</Link>
 						</NavbarMenuItem>
 						<NavbarMenuItem
@@ -202,6 +197,27 @@ function Nav() {
 										<FaBox />
 									</p>
 									<p className='font-light w-full text-xl text-left'>Orders</p>
+								</div>
+							</Link>
+						</NavbarMenuItem>
+						<NavbarMenuItem
+							className='bg-black'
+							onClick={() => setMenuOpen(() => false)}
+						>
+							<Link href={'/payments'}>
+								<div
+									className='flex gap-4 w-100 min-h-[44px] h-full items-center px-4 py-4 rounded-xl cursor-pointer transition-all duration-150 active:scale-[0.98] hover:bg-white hover:text-black'
+									style={{
+										background: pathname == '/payments' ? '#ffffff' : '#000000',
+										color: pathname == '/payments' ? '#000000' : '#ffffff',
+									}}
+								>
+									<p className='text-2xl'>
+										<FaSackDollar />
+									</p>
+									<p className='font-light w-full text-xl text-left'>
+										Payments
+									</p>
 								</div>
 							</Link>
 						</NavbarMenuItem>
