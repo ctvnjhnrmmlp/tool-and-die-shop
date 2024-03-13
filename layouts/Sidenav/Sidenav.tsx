@@ -1,25 +1,13 @@
 'use client';
 
-import { Button, Navbar, ScrollShadow, Tab, Tabs } from '@nextui-org/react';
-import {
-	FaAddressCard,
-	FaBox,
-	FaCheckCircle,
-	FaFileInvoice,
-	FaHome,
-	FaInbox,
-	FaMoneyBillAlt,
-	FaShoppingCart,
-	FaStore,
-} from 'react-icons/fa';
+import { FaBox, FaHome, FaShoppingCart } from 'react-icons/fa';
 
+import { ScrollShadow } from '@nextui-org/react';
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { BiSolidFactory } from 'react-icons/bi';
 import { BsTools } from 'react-icons/bs';
 import { FaSackDollar } from 'react-icons/fa6';
-import { MdFactory } from 'react-icons/md';
 
 function Sidenav() {
 	const { data: session } = useSession();
@@ -34,7 +22,13 @@ function Sidenav() {
 							<>
 								<div>
 									<Link href={'/'}>
-										<div className='flex gap-4 w-full min-h-[44px] h-full items-center px-4 py-4 rounded-xl cursor-pointer transition-all duration-150 active:scale-[0.98] hover:bg-white hover:text-black'>
+										<div
+											className='flex gap-4 w-full min-h-[44px] h-full items-center px-4 py-4 rounded-xl cursor-pointer transition-all duration-150 active:scale-[0.98] hover:bg-white hover:text-black'
+											style={{
+												background: pathname == '/' ? '#ffffff' : '#000000',
+												color: pathname == '/' ? '#000000' : '#ffffff',
+											}}
+										>
 											<p className='text-2xl'>
 												<FaHome />
 											</p>
@@ -47,7 +41,14 @@ function Sidenav() {
 
 								<div>
 									<Link href={'/products'}>
-										<div className='flex gap-4 w-full min-h-[44px] h-full items-center px-4 py-4 rounded-xl cursor-pointer transition-all duration-150 active:scale-[0.98] hover:bg-white hover:text-black'>
+										<div
+											className='flex gap-4 w-full min-h-[44px] h-full items-center px-4 py-4 rounded-xl cursor-pointer transition-all duration-150 active:scale-[0.98] hover:bg-white hover:text-black'
+											style={{
+												background:
+													pathname == '/products' ? '#ffffff' : '#000000',
+												color: pathname == '/products' ? '#000000' : '#ffffff',
+											}}
+										>
 											<p className='text-2xl'>
 												<BsTools />
 											</p>
@@ -60,7 +61,13 @@ function Sidenav() {
 
 								<div>
 									<Link href={'/cart'}>
-										<div className='flex gap-4 w-full min-h-[44px] h-full items-center px-4 py-4 rounded-xl cursor-pointer transition-all duration-150 active:scale-[0.98] hover:bg-white hover:text-black'>
+										<div
+											className='flex gap-4 w-full min-h-[44px] h-full items-center px-4 py-4 rounded-xl cursor-pointer transition-all duration-150 active:scale-[0.98] hover:bg-white hover:text-black'
+											style={{
+												background: pathname == '/cart' ? '#ffffff' : '#000000',
+												color: pathname == '/cart' ? '#000000' : '#ffffff',
+											}}
+										>
 											<p className='text-2xl'>
 												<FaShoppingCart />
 											</p>
@@ -73,7 +80,14 @@ function Sidenav() {
 
 								<div>
 									<Link href={'/orders'}>
-										<div className='flex gap-4 w-full min-h-[44px] h-full items-center px-4 py-4 rounded-xl cursor-pointer transition-all duration-150 active:scale-[0.98] hover:bg-white hover:text-black'>
+										<div
+											className='flex gap-4 w-full min-h-[44px] h-full items-center px-4 py-4 rounded-xl cursor-pointer transition-all duration-150 active:scale-[0.98] hover:bg-white hover:text-black'
+											style={{
+												background:
+													pathname == '/orders' ? '#ffffff' : '#000000',
+												color: pathname == '/orders' ? '#000000' : '#ffffff',
+											}}
+										>
 											<p className='text-2xl'>
 												<FaBox />
 											</p>
@@ -86,7 +100,14 @@ function Sidenav() {
 
 								<div>
 									<Link href={'/payments'}>
-										<div className='flex gap-4 w-full min-h-[44px] h-full items-center px-4 py-4 rounded-xl cursor-pointer transition-all duration-150 active:scale-[0.98] hover:bg-white hover:text-black'>
+										<div
+											className='flex gap-4 w-full min-h-[44px] h-full items-center px-4 py-4 rounded-xl cursor-pointer transition-all duration-150 active:scale-[0.98] hover:bg-white hover:text-black'
+											style={{
+												background:
+													pathname == '/payments' ? '#ffffff' : '#000000',
+												color: pathname == '/payments' ? '#000000' : '#ffffff',
+											}}
+										>
 											<p className='text-2xl'>
 												<FaSackDollar />
 											</p>
@@ -103,7 +124,13 @@ function Sidenav() {
 							<>
 								<div>
 									<Link href={'/'}>
-										<div className='flex gap-4 w-full min-h-[44px] h-full items-center px-4 py-4 rounded-xl cursor-pointer transition-all duration-150 active:scale-[0.98] hover:bg-white hover:text-black'>
+										<div
+											className='flex gap-4 w-full min-h-[44px] h-full items-center px-4 py-4 rounded-xl cursor-pointer transition-all duration-150 active:scale-[0.98] hover:bg-white hover:text-black'
+											style={{
+												background: pathname == '/' ? '#ffffff' : '#000000',
+												color: pathname == '/' ? '#000000' : '#ffffff',
+											}}
+										>
 											<p className='text-2xl'>
 												<FaHome />
 											</p>
@@ -116,7 +143,14 @@ function Sidenav() {
 
 								<div>
 									<Link href={'/orders'}>
-										<div className='flex gap-4 w-full min-h-[44px] h-full items-center px-4 py-4 rounded-xl cursor-pointer transition-all duration-150 active:scale-[0.98] hover:bg-white hover:text-black'>
+										<div
+											className='flex gap-4 w-full min-h-[44px] h-full items-center px-4 py-4 rounded-xl cursor-pointer transition-all duration-150 active:scale-[0.98] hover:bg-white hover:text-black'
+											style={{
+												background:
+													pathname == '/orders' ? '#ffffff' : '#000000',
+												color: pathname == '/orders' ? '#000000' : '#ffffff',
+											}}
+										>
 											<p className='text-2xl'>
 												<FaSackDollar />
 											</p>
@@ -133,7 +167,14 @@ function Sidenav() {
 							<>
 								<div>
 									<Link href={'/orders'}>
-										<div className='flex gap-4 w-full min-h-[44px] h-full items-center px-4 py-4 rounded-xl cursor-pointer transition-all duration-150 active:scale-[0.98] hover:bg-white hover:text-black'>
+										<div
+											className='flex gap-4 w-full min-h-[44px] h-full items-center px-4 py-4 rounded-xl cursor-pointer transition-all duration-150 active:scale-[0.98] hover:bg-white hover:text-black'
+											style={{
+												background:
+													pathname == '/orders' ? '#ffffff' : '#000000',
+												color: pathname == '/orders' ? '#000000' : '#ffffff',
+											}}
+										>
 											<p className='text-2xl'>
 												<FaBox />
 											</p>
@@ -146,7 +187,14 @@ function Sidenav() {
 
 								<div>
 									<Link href={'/requests'}>
-										<div className='flex gap-4 w-full min-h-[44px] h-full items-center px-4 py-4 rounded-xl cursor-pointer transition-all duration-150 active:scale-[0.98] hover:bg-white hover:text-black'>
+										<div
+											className='flex gap-4 w-full min-h-[44px] h-full items-center px-4 py-4 rounded-xl cursor-pointer transition-all duration-150 active:scale-[0.98] hover:bg-white hover:text-black'
+											style={{
+												background:
+													pathname == '/requests' ? '#ffffff' : '#000000',
+												color: pathname == '/requests' ? '#000000' : '#ffffff',
+											}}
+										>
 											<p className='text-2xl'>
 												<FaHome />
 											</p>
@@ -163,7 +211,14 @@ function Sidenav() {
 							<>
 								<div>
 									<Link href={'/orders'}>
-										<div className='flex gap-4 w-full min-h-[44px] h-full items-center px-4 py-4 rounded-xl cursor-pointer transition-all duration-150 active:scale-[0.98] hover:bg-white hover:text-black'>
+										<div
+											className='flex gap-4 w-full min-h-[44px] h-full items-center px-4 py-4 rounded-xl cursor-pointer transition-all duration-150 active:scale-[0.98] hover:bg-white hover:text-black'
+											style={{
+												background:
+													pathname == '/orders' ? '#ffffff' : '#000000',
+												color: pathname == '/orders' ? '#000000' : '#ffffff',
+											}}
+										>
 											<p className='text-2xl'>
 												<FaBox />
 											</p>

@@ -61,7 +61,6 @@ function Login() {
 						});
 
 						if (!res?.error) router.push(callbackUrl);
-						else console.log('invalid email or password');
 					} catch (error) {
 						console.log('Error: ', error);
 					}

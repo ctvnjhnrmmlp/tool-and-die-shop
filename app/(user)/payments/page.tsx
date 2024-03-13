@@ -1,7 +1,5 @@
 'use client';
 
-import { toolAndDieDatabase } from '@/database/tool-and-die/tool-and-die.database';
-import { useLiveQuery } from 'dexie-react-hooks';
 import { useSession } from 'next-auth/react';
 import { redirect } from 'next/navigation';
 import React from 'react';

@@ -1,11 +1,11 @@
 const products = [
-	{
-		id: 1,
-		name: 'Clausing Lathe',
-		src: 'clausing-lathe.png',
-		type: 'equipment',
-		status: '',
-	},
+	// {
+	// 	id: 1,
+	// 	name: 'Clausing Lathe',
+	// 	src: 'clausing-lathe.png',
+	// 	type: 'equipment',
+	// 	status: '',
+	// },
 	{
 		id: 2,
 		name: 'Die Spotting Machine',
@@ -13,13 +13,13 @@ const products = [
 		type: 'equipment',
 		status: '',
 	},
-	// {
-	// 	id: 3,
-	// 	name: 'Economical Fiber Laser',
-	// 	src: 'economical-fiber-laser.png',
-	// 	type: 'equipment',
-	// 	status: '',
-	// },
+	{
+		id: 3,
+		name: 'Economical Fiber Laser',
+		src: 'economical-fiber-laser.png',
+		type: 'equipment',
+		status: '',
+	},
 	// {
 	// 	id: 4,
 	// 	name: 'Engraving CNC Machine',

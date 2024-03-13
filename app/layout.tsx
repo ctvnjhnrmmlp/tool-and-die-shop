@@ -3,9 +3,6 @@
 import './globals.css';
 
 import Splash from '@/components/Splash/Splash';
-import Nav from '@/layouts/Nav/Nav';
-import Sidenav from '@/layouts/Sidenav/Sidenav';
-import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import React from 'react';
 import Providers from './providers';
