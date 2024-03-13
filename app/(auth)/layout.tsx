@@ -8,17 +8,15 @@ function AuthLayout({
 }>) {
 	return (
 		<>
-			<nav className='fixed p-6 outline outline-1 outline-[#27282D] w-full'>
-				<div className='flex justify-center items-center'>
+			<nav className='fixed pt-4 w-full'>
+				<div className='flex justify-center items-center border border-[#3F3F46] rounded-3xl w-[90%] mx-auto p-6'>
 					<Link href='/'>
-						<div className='flex justify-center items-center gap-4'>
-							<p className='text-center font-medium text-lg'>
-								<span className='font-extrabold text-4xl'>
-									<FaTools />
-								</span>
+						<div className='flex justify-center items-center gap-4 '>
+							<p className='text-center font-extrabold text-3xl sm:text-4xl'>
+								<FaTools />
 							</p>
-							<p className='text-center font-medium text-lg'>
-								<span className='font-extrabold text-4xl'>Tool and Die</span>
+							<p className='text-center font-extrabold text-3xl sm:text-4xl'>
+								Tool and Die
 							</p>
 						</div>
 					</Link>

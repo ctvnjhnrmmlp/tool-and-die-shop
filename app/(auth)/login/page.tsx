@@ -11,6 +11,9 @@ import { MdOutlinePassword } from 'react-icons/md';
 
 function Login() {
 	const { data: session } = useSession();
+
+	if (session) redirect('/');
+
 	const searchParams = useSearchParams();
 	const router = useRouter();
 
@@ -40,8 +43,6 @@ function Login() {
 		}
 	};
 
-	if (session) redirect('/');
-
 	return (
 		<section className='flex h-screen flex-col items-center justify-center'>
 			<Formik
@@ -67,9 +68,12 @@ function Login() {
 				}}
 			>
 				{(formik) => (
-					<Form onSubmit={formik.handleSubmit} className='flex flex-col gap-8'>
+					<Form
+						onSubmit={formik.handleSubmit}
+						className='flex flex-col gap-9 py-12 px-8 sm:p-16 border border-[#3F3F46] rounded-3xl'
+					>
 						<div>
-							<h1 className='text-center text-7xl font-bold text-white'>
+							<h1 className='text-center text-7xl sm:text-8xl font-bold text-white'>
 								Login
 							</h1>
 						</div>
@@ -85,7 +89,7 @@ function Login() {
 									className='mx-auto'
 									classNames={{
 										input: 'font-extrabold text-2xl py-4',
-										inputWrapper: 'py-8',
+										inputWrapper: 'py-8 border border-[#3F3F46]',
 									}}
 									startContent={
 										<p className='text-2xl'>
@@ -111,7 +115,7 @@ function Login() {
 									className='mx-auto'
 									classNames={{
 										input: 'font-extrabold text-2xl py-4',
-										inputWrapper: 'py-8',
+										inputWrapper: 'py-8 border border-[#3F3F46]',
 									}}
 									startContent={
 										<p className='text-2xl'>
