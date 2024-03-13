@@ -10,4 +10,5 @@ interface Notification {
 	id: number;
 	name: string;
 	status: string;
+	user: 'customer' | 'admin' | 'worker' | 'cis';
 }

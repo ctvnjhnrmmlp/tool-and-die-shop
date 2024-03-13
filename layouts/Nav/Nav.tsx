@@ -2,10 +2,14 @@
 
 import {
 	Avatar,
+	Badge,
+	Button,
 	Dropdown,
 	DropdownItem,
 	DropdownMenu,
 	DropdownTrigger,
+	Listbox,
+	ListboxItem,
 	Navbar,
 	NavbarBrand,
 	NavbarContent,
@@ -17,7 +21,7 @@ import {
 } from '@nextui-org/react';
 import { signOut, useSession } from 'next-auth/react';
 import { redirect, usePathname } from 'next/navigation';
-import { FaBox, FaHome, FaShoppingCart, FaTools } from 'react-icons/fa';
+import { FaBell, FaBox, FaHome, FaShoppingCart, FaTools } from 'react-icons/fa';
 import { MdLogout, MdSunny } from 'react-icons/md';
 
 import Link from 'next/link';
@@ -79,7 +83,27 @@ function Nav() {
 			</NavbarContent>
 
 			<NavbarContent justify='end'>
-				<NavbarItem className='flex'>
+				<NavbarItem className='flex items-center justify-center gap-4'>
+					<Dropdown placement='bottom-end' className='bg-black'>
+						<DropdownTrigger>
+							<Button isIconOnly variant='light' className='p-4'>
+								<Badge content='' color='danger'>
+									<span className='text-2xl text-white'>
+										<FaBell />
+									</span>
+								</Badge>
+							</Button>
+						</DropdownTrigger>
+						<DropdownMenu aria-label='Notifications'>
+							<DropdownItem>
+								<div>
+									<div>
+										<p>Notification</p>
+									</div>
+								</div>
+							</DropdownItem>
+						</DropdownMenu>
+					</Dropdown>
 					<Dropdown placement='bottom-end' className='bg-black'>
 						<DropdownTrigger>
 							<Avatar
@@ -92,24 +116,16 @@ function Nav() {
 							/>
 						</DropdownTrigger>
 						<DropdownMenu aria-label='Account Actions' variant='flat'>
-							<DropdownItem key='theme' onClick={() => signOut()}>
-								<div className='flex items-center gap-1'>
-									<p>
-										<MdSunny />
-									</p>
-									<p>Change Theme</p>
-								</div>
-							</DropdownItem>
 							<DropdownItem
 								key='logout'
 								color='danger'
 								onClick={() => signOut()}
 							>
-								<div className='flex items-center gap-1'>
+								<div className='flex items-center gap-1 p-1'>
 									<p>
 										<MdLogout />
 									</p>
-									<p>Log Out</p>
+									<p className='text-lg'>Log Out</p>
 								</div>
 							</DropdownItem>
 						</DropdownMenu>
