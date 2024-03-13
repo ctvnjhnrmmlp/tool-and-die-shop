@@ -3,24 +3,20 @@
 import { Button } from '@nextui-org/react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { FaTools } from 'react-icons/fa';
 
 function GlobalError() {
 	return (
 		<section className='flex flex-col gap-6 px-4 h-screen justify-center items-center'>
 			<div className='flex flex-col gap-16'>
 				<div className='flex justify-center'>
-					<Image
-						className='w-72'
-						src='/images/rekt.png '
-						alt='REKT logo'
-						width={40}
-						height={40}
-						unoptimized
-					/>
+					<p className='text-8xl'>
+						<FaTools />
+					</p>
 				</div>
 				<div className='flex flex-col'>
-					<h1 className='text-6xl sm:text-7xl md:text-8xl lg:text-heading-one-large uppercase text-center leading-none font-extrabold'>
-						ERROR
+					<h1 className='text-6xl sm:text-7xl md:text-8xl lg:text-heading-one-large text-center leading-none font-extrabold'>
+						Page not Found
 					</h1>
 				</div>
 				<div className='flex justify-center'>
@@ -28,7 +24,7 @@ function GlobalError() {
 						as={Link}
 						href='/'
 						variant='bordered'
-						className='text-2xl p-8 border-1 dark:border-[#3F3F46] font-extrabold bg-[#ED8AB8] text-black'
+						className='text-2xl p-8 border-1 dark:border-[#3F3F46] font-extrabold bg-white text-black'
 					>
 						Go Back Home
 					</Button>

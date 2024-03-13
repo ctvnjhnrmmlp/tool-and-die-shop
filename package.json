@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@nextui-org/react": "^2.2.10",
+    "@types/animejs": "^3.1.12",
+    "animejs": "^3.2.2",
     "dexie": "^3.2.6",
     "dexie-react-hooks": "^1.1.7",
     "formik": "^2.4.5",

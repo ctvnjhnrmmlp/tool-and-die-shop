@@ -16,6 +16,10 @@ const config: Config = {
 							DEFAULT: '#FFFFFF',
 							foreground: '#000000',
 						},
+						default: {
+							DEFAULT: '#FFFFFF',
+							foreground: '#FFFFFF',
+						},
 						focus: '#FFFFFF',
 					},
 				},

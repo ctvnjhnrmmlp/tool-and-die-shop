@@ -1,9 +1,14 @@
-// import PageSkeleton from '@/components/Skeleton/PageSkeleton/PageSkeleton';
+'use client';
+
+import Splash from '@/components/Splash/Splash';
+import React from 'react';
 
 function Loading() {
+	const [loading, setLoading] = React.useState(true);
+
 	return (
 		<section className='flex flex-col gap-6 px-4'>
-			{/* <PageSkeleton /> */}
+			{loading && <Splash finishLoading={() => setLoading(false)} />}
 		</section>
 	);
 }
