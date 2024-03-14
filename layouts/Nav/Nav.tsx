@@ -22,6 +22,8 @@ import { redirect, usePathname } from 'next/navigation';
 import { FaBell, FaBox, FaHome, FaShoppingCart, FaTools } from 'react-icons/fa';
 import { MdLogout, MdSunny } from 'react-icons/md';
 
+import { toolAndDieDatabase } from '@/database/tool-and-die/tool-and-die.database';
+import { useLiveQuery } from 'dexie-react-hooks';
 import Link from 'next/link';
 import React from 'react';
 import { BsTools } from 'react-icons/bs';
@@ -35,6 +37,10 @@ function Nav() {
 	const pathname = usePathname();
 	const { isOpen, onOpen, onOpenChange } = useDisclosure();
 	const [menuOpen, setMenuOpen] = React.useState(false);
+
+	const notificationList = useLiveQuery(() =>
+		toolAndDieDatabase.notifications.toArray()
+	);
 
 	return (
 		<Navbar
@@ -89,7 +95,7 @@ function Nav() {
 						variant='light'
 						className='p-4'
 					>
-						<Badge content='' color='danger'>
+						<Badge content={notificationList?.length} color='danger'>
 							<span className='text-2xl text-white'>
 								<FaBell />
 							</span>
