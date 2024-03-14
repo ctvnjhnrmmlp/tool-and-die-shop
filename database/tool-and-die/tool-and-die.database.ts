@@ -9,6 +9,9 @@ export class ToolAndDieDatabase extends Dexie {
 	processes!: Table<Product>;
 	finals!: Table<Product>;
 	approves!: Table<Product>;
+	receipts!: Table<Product>;
+	timecards!: Table<Product>;
+	jobs!: Table<Product>;
 	notifications!: Table<Notification>;
 
 	constructor() {
@@ -22,6 +25,9 @@ export class ToolAndDieDatabase extends Dexie {
 			processes: '++id, name, src, type, status',
 			finals: '++id, name, src, type, status',
 			approves: '++id, name, src, type, status',
+			receipts: '++id, name, src, type, status',
+			timecards: '++id, name, src, type, status',
+			jobs: '++id, name, src, type, status',
 			notifications: '++id, name, status, user',
 		});
 	}

@@ -8,8 +8,6 @@ import {
 	DropdownItem,
 	DropdownMenu,
 	DropdownTrigger,
-	Listbox,
-	ListboxItem,
 	Navbar,
 	NavbarBrand,
 	NavbarContent,

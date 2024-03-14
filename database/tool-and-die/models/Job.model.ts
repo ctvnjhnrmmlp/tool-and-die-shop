@@ -1,5 +1,5 @@
 import { toolAndDieDatabase } from '../tool-and-die.database';
 
-const NotificationModel = {};
+const JobModel = {};
 
-export default NotificationModel;
+export default JobModel;

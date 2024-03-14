@@ -30,12 +30,12 @@ const Splash = ({ finishLoading }: { finishLoading: () => void }) => {
 		<div className='flex flex-col min-h-screen justify-center items-center duration-300'>
 			<div className='flex flex-col gap-16' id='splash-container'>
 				<div className='flex justify-center'>
-					<p className='text-8xl'>
+					<p className='text-7xl sm:text-8xl'>
 						<FaTools />
 					</p>
 				</div>
 				<div className='flex flex-col'>
-					<h1 className='text-6xl sm:text-7xl md:text-8xl lg:text-heading-one-large text-center leading-none font-extrabold'>
+					<h1 className='text-5xl sm:text-7xl md:text-8xl lg:text-heading-one-large text-center leading-none font-extrabold'>
 						Tool and Die
 					</h1>
 				</div>

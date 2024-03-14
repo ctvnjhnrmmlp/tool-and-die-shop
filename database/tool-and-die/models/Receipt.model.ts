@@ -1,5 +1,5 @@
 import { toolAndDieDatabase } from '../tool-and-die.database';
 
-const NotificationModel = {};
+const ReceiptModel = {};
 
-export default NotificationModel;
+export default ReceiptModel;
