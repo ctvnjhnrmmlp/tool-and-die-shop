@@ -82,7 +82,20 @@ function Nav() {
 
 			<NavbarContent justify='end'>
 				<NavbarItem className='flex items-center justify-center gap-4'>
-					<Dropdown placement='bottom-end' className='bg-black'>
+					<Button
+						as={Link}
+						href='/notifications'
+						isIconOnly
+						variant='light'
+						className='p-4'
+					>
+						<Badge content='' color='danger'>
+							<span className='text-2xl text-white'>
+								<FaBell />
+							</span>
+						</Badge>
+					</Button>
+					{/* <Dropdown placement='bottom-end' className='bg-black'>
 						<DropdownTrigger>
 							<Button isIconOnly variant='light' className='p-4'>
 								<Badge content='' color='danger'>
@@ -101,7 +114,7 @@ function Nav() {
 								</div>
 							</DropdownItem>
 						</DropdownMenu>
-					</Dropdown>
+					</Dropdown> */}
 					<Dropdown placement='bottom-end' className='bg-black'>
 						<DropdownTrigger>
 							<Avatar
