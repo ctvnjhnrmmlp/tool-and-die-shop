@@ -185,12 +185,6 @@ function Receipts() {
 													</div>
 													<div className='flex flex-row items-center space-between justify-between'>
 														<p className='text-md sm:text-lg gap-4'>
-															<span className='font-bold'>Price</span>
-														</p>
-														<p>{selectedProduct.purchasePrice}</p>
-													</div>
-													<div className='flex flex-row items-center space-between justify-between'>
-														<p className='text-md sm:text-lg gap-4'>
 															<span className='font-bold'>Warranty</span>
 														</p>
 														<p>{selectedProduct.warrantyExpires}</p>
@@ -212,6 +206,12 @@ function Receipts() {
 															<span className='font-bold'>Usage</span>
 														</p>
 														<p>{selectedProduct.usageHours}</p>
+													</div>
+													<div className='flex flex-row items-center space-between justify-between'>
+														<p className='text-md sm:text-lg gap-4'>
+															<span className='font-bold'>Price</span>
+														</p>
+														<p>${selectedProduct.purchasePrice}</p>
 													</div>
 													<div className='flex flex-row items-center space-between justify-between'>
 														<p className='text-md sm:text-lg gap-4'>
@@ -249,6 +249,12 @@ function Receipts() {
 															<span className='font-bold'>Quantity</span>
 														</p>
 														<p>{selectedProduct.quantity}</p>
+													</div>
+													<div className='flex flex-row items-center space-between justify-between'>
+														<p className='text-md sm:text-lg gap-4'>
+															<span className='font-bold'>Price</span>
+														</p>
+														<p>${selectedProduct.price}</p>
 													</div>
 													<div className='flex flex-row items-center space-between justify-between'>
 														<p className='text-md sm:text-lg gap-4'>

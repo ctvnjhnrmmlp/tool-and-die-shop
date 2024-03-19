@@ -247,6 +247,12 @@ function Cart() {
 													</p>
 													<p>{selectedProduct.usageHours}</p>
 												</div>
+												<div className='flex flex-row items-center space-between justify-between'>
+													<p className='text-md sm:text-lg gap-4'>
+														<span className='font-bold'>Price</span>
+													</p>
+													<p>${selectedProduct.purchasePrice}</p>
+												</div>
 											</div>
 										)}
 										{selectedProduct?.type == 'tool' && (
@@ -268,6 +274,12 @@ function Cart() {
 														<span className='font-bold'>Quantity</span>
 													</p>
 													<p>{selectedProduct.quantity}</p>
+												</div>
+												<div className='flex flex-row items-center space-between justify-between'>
+													<p className='text-md sm:text-lg gap-4'>
+														<span className='font-bold'>Price</span>
+													</p>
+													<p>${selectedProduct.price}</p>
 												</div>
 											</div>
 										)}

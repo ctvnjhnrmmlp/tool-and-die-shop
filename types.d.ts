@@ -15,6 +15,7 @@ interface Tool {
 	brand: string;
 	material: string;
 	quantity: number;
+	price: number;
 }
 
 interface Product extends Equipment, Tool {

@@ -15,12 +15,7 @@ import {
 } from '@nextui-org/react';
 
 import ApproveModel from '@/database/tool-and-die/models/Approve.model';
-import ConfirmModel from '@/database/tool-and-die/models/Confirm.model';
-import FinalModel from '@/database/tool-and-die/models/Final.model';
-import OrderModel from '@/database/tool-and-die/models/Order.model';
 import PaymentModel from '@/database/tool-and-die/models/Payment.model';
-import ProcessModel from '@/database/tool-and-die/models/Process.model';
-import RequestModel from '@/database/tool-and-die/models/Request.model';
 import { toolAndDieDatabase } from '@/database/tool-and-die/tool-and-die.database';
 import { useLiveQuery } from 'dexie-react-hooks';
 import { useSession } from 'next-auth/react';
@@ -46,46 +41,6 @@ function Orders() {
 
 	const handleSelectProduct = (item: Product) => {
 		setSelectedProduct(() => item);
-	};
-
-	const handleRequestProduct = async () => {
-		if (selectedProduct) await RequestModel.addProduct(selectedProduct);
-	};
-
-	const handleDeleteRequestedProduct = async () => {
-		if (selectedProduct) await RequestModel.deleteProduct(selectedProduct);
-	};
-
-	const handleDeletePendingProduct = async () => {
-		if (selectedProduct) await OrderModel.deleteProduct(selectedProduct);
-	};
-
-	const handleConfirmProduct = async () => {
-		if (selectedProduct) await ConfirmModel.addProduct(selectedProduct);
-	};
-
-	const handleDeleteConfirmedProduct = async () => {
-		if (selectedProduct) await ConfirmModel.deleteProduct(selectedProduct);
-	};
-
-	const handleProcessProduct = async () => {
-		if (selectedProduct) await ProcessModel.addProduct(selectedProduct);
-	};
-
-	const handleDeleteProcessedProduct = async () => {
-		if (selectedProduct) await ProcessModel.deleteProduct(selectedProduct);
-	};
-
-	const handleFinalizeProduct = async () => {
-		if (selectedProduct) await FinalModel.addProduct(selectedProduct);
-	};
-
-	const handleDeleteFinalizedProduct = async () => {
-		if (selectedProduct) await FinalModel.deleteProduct(selectedProduct);
-	};
-
-	const handleApproveProduct = async () => {
-		if (selectedProduct) await ApproveModel.addProduct(selectedProduct);
 	};
 
 	const handleDeleteApprovedProduct = async () => {
@@ -258,66 +213,6 @@ function Orders() {
 						)}
 				</div>
 
-				{/* <div>
-					{session.user?.name == 'Admin' &&
-						orderList &&
-						orderList?.length >= 1 && (
-							<Modal
-								isDismissable={false}
-								hideCloseButton={true}
-								isOpen={isOpen}
-								onOpenChange={() => onOpenChange()}
-								backdrop='blur'
-								className='bg-black'
-							>
-								<ModalContent>
-									{(onClose) => (
-										<>
-											<ModalHeader className='flex justify-center items-center'>
-												<p className='text-2xl font-bold text-center'>
-													{selectedProduct?.name}
-												</p>
-											</ModalHeader>
-											<ModalBody className='flex items-center'>
-												<Image
-													alt={selectedProduct?.name}
-													className='object-cover'
-													src={`/images/${selectedProduct?.src}`}
-													width={350}
-												/>
-											</ModalBody>
-											<ModalFooter>
-												<Button
-													color='danger'
-													variant='light'
-													onPress={onClose}
-												>
-													Close
-												</Button>
-												<Button
-													onPress={() => {
-														handleRequestProduct();
-														handleDeletePendingProduct();
-														// setSelectedProduct({
-														// 	name: '',
-														// 	src: '',
-														// 	status: '',
-														// 	type: '',
-														// });
-														onClose();
-													}}
-													className='bg-white text-black'
-												>
-													Request Product
-												</Button>
-											</ModalFooter>
-										</>
-									)}
-								</ModalContent>
-							</Modal>
-						)}
-				</div> */}
-
 				<div>
 					{session.user?.name == 'Customer' &&
 						approveList &&
@@ -381,12 +276,6 @@ function Orders() {
 														</div>
 														<div className='flex flex-row items-center space-between justify-between'>
 															<p className='text-md sm:text-lg gap-4'>
-																<span className='font-bold'>Price</span>
-															</p>
-															<p>{selectedProduct.purchasePrice}</p>
-														</div>
-														<div className='flex flex-row items-center space-between justify-between'>
-															<p className='text-md sm:text-lg gap-4'>
 																<span className='font-bold'>Warranty</span>
 															</p>
 															<p>{selectedProduct.warrantyExpires}</p>
@@ -408,6 +297,12 @@ function Orders() {
 																<span className='font-bold'>Usage</span>
 															</p>
 															<p>{selectedProduct.usageHours}</p>
+														</div>
+														<div className='flex flex-row items-center space-between justify-between'>
+															<p className='text-md sm:text-lg gap-4'>
+																<span className='font-bold'>Price</span>
+															</p>
+															<p>${selectedProduct.purchasePrice}</p>
 														</div>
 														<div className='flex flex-row items-center space-between justify-between'>
 															<p className='text-md sm:text-lg gap-4'>
@@ -445,6 +340,12 @@ function Orders() {
 																<span className='font-bold'>Quantity</span>
 															</p>
 															<p>{selectedProduct.quantity}</p>
+														</div>
+														<div className='flex flex-row items-center space-between justify-between'>
+															<p className='text-md sm:text-lg gap-4'>
+																<span className='font-bold'>Price</span>
+															</p>
+															<p>${selectedProduct.price}</p>
 														</div>
 														<div className='flex flex-row items-center space-between justify-between'>
 															<p className='text-md sm:text-lg gap-4'>
@@ -488,251 +389,6 @@ function Orders() {
 							</Modal>
 						)}
 				</div>
-
-				{/* 
-				<div>
-					{session.user?.name == 'Worker' &&
-						requestList &&
-						requestList.length >= 1 && (
-							<Modal
-								isDismissable={false}
-								hideCloseButton={true}
-								isOpen={isOpen}
-								onOpenChange={() => onOpenChange()}
-								backdrop='blur'
-								className='bg-black'
-							>
-								<ModalContent>
-									{(onClose) => (
-										<>
-											<ModalHeader className='flex justify-center items-center'>
-												<p className='text-2xl font-bold text-center'>
-													{selectedProduct?.name}
-												</p>
-											</ModalHeader>
-											<ModalBody className='flex items-center'>
-												<Image
-													alt={selectedProduct?.name}
-													className='object-cover'
-													src={`/images/${selectedProduct?.src}`}
-													width={350}
-												/>
-											</ModalBody>
-											<ModalFooter>
-												<Button
-													color='danger'
-													variant='light'
-													onPress={onClose}
-												>
-													Close
-												</Button>
-												<Button
-													onPress={() => {
-														handleConfirmProduct();
-														handleDeleteRequestedProduct();
-														// setSelectedProduct({
-														// 	id: 0,
-														// 	name: '',
-														// 	src: '',
-														// 	status: '',
-														// 	type: '',
-														// });
-														onClose();
-													}}
-													className='bg-white text-black'
-												>
-													Confirm Product
-												</Button>
-											</ModalFooter>
-										</>
-									)}
-								</ModalContent>
-							</Modal>
-						)}
-				</div>
-
-				<div>
-					{session.user?.name == 'Worker' &&
-						confirmList &&
-						confirmList.length >= 1 && (
-							<Modal
-								isDismissable={false}
-								hideCloseButton={true}
-								isOpen={isOpen}
-								onOpenChange={() => onOpenChange()}
-								backdrop='blur'
-								className='bg-black'
-							>
-								<ModalContent>
-									{(onClose) => (
-										<>
-											<ModalHeader className='flex justify-center items-center'>
-												<p className='text-2xl font-bold text-center'>
-													{selectedProduct?.name}
-												</p>
-											</ModalHeader>
-											<ModalBody className='flex items-center'>
-												<Image
-													alt={selectedProduct?.name}
-													className='object-cover'
-													src={`/images/${selectedProduct?.src}`}
-													width={350}
-												/>
-											</ModalBody>
-											<ModalFooter>
-												<Button
-													color='danger'
-													variant='light'
-													onPress={onClose}
-												>
-													Close
-												</Button>
-												<Button
-													onPress={() => {
-														handleProcessProduct();
-														handleDeleteConfirmedProduct();
-														// setSelectedProduct({
-														// 	id: 0,
-														// 	name: '',
-														// 	src: '',
-														// 	status: '',
-														// 	type: '',
-														// });
-														onClose();
-													}}
-													className='bg-white text-black'
-												>
-													Process Product
-												</Button>
-											</ModalFooter>
-										</>
-									)}
-								</ModalContent>
-							</Modal>
-						)}
-				</div>
-
-				<div>
-					{session.user?.name == 'Worker' &&
-						processList &&
-						processList.length >= 1 && (
-							<Modal
-								isDismissable={false}
-								hideCloseButton={true}
-								isOpen={isOpen}
-								onOpenChange={() => onOpenChange()}
-								backdrop='blur'
-								className='bg-black'
-							>
-								<ModalContent>
-									{(onClose) => (
-										<>
-											<ModalHeader className='flex justify-center items-center'>
-												<p className='text-2xl font-bold text-center'>
-													{selectedProduct?.name}
-												</p>
-											</ModalHeader>
-											<ModalBody className='flex items-center'>
-												<Image
-													alt={selectedProduct?.name}
-													className='object-cover'
-													src={`/images/${selectedProduct?.src}`}
-													width={350}
-												/>
-											</ModalBody>
-											<ModalFooter>
-												<Button
-													color='danger'
-													variant='light'
-													onPress={onClose}
-												>
-													Close
-												</Button>
-												<Button
-													onPress={() => {
-														handleFinalizeProduct();
-														handleDeleteProcessedProduct();
-														// setSelectedProduct({
-														// 	id: 0,
-														// 	name: '',
-														// 	src: '',
-														// 	status: '',
-														// 	type: '',
-														// });
-														onClose();
-													}}
-													className='bg-white text-black'
-												>
-													Finalize Product
-												</Button>
-											</ModalFooter>
-										</>
-									)}
-								</ModalContent>
-							</Modal>
-						)}
-				</div>
-
-				<div>
-					{session.user?.name == 'CIS' &&
-						finalList &&
-						finalList.length >= 1 && (
-							<Modal
-								isDismissable={false}
-								hideCloseButton={true}
-								isOpen={isOpen}
-								onOpenChange={() => onOpenChange()}
-								backdrop='blur'
-								className='bg-black'
-							>
-								<ModalContent>
-									{(onClose) => (
-										<>
-											<ModalHeader className='flex justify-center items-center'>
-												<p className='text-2xl font-bold text-center'>
-													{selectedProduct?.name}
-												</p>
-											</ModalHeader>
-											<ModalBody className='flex items-center'>
-												<Image
-													alt={selectedProduct?.name}
-													className='object-cover'
-													src={`/images/${selectedProduct?.src}`}
-													width={350}
-												/>
-											</ModalBody>
-											<ModalFooter>
-												<Button
-													color='danger'
-													variant='light'
-													onPress={onClose}
-												>
-													Close
-												</Button>
-												<Button
-													onPress={() => {
-														handleApproveProduct();
-														handleDeleteFinalizedProduct();
-														// setSelectedProduct({
-														// 	id: 0,
-														// 	name: '',
-														// 	src: '',
-														// 	status: '',
-														// 	type: '',
-														// });
-														onClose();
-													}}
-													className='bg-white text-black'
-												>
-													Approve Product
-												</Button>
-											</ModalFooter>
-										</>
-									)}
-								</ModalContent>
-							</Modal>
-						)}
-				</div> */}
 			</div>
 		</section>
 	);

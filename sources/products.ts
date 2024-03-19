@@ -369,6 +369,7 @@ const products = [
 		brand: 'ToolPro',
 		material: 'Steel',
 		quantity: 10,
+		price: 12.99,
 	},
 	{
 		id: 22,
@@ -379,6 +380,7 @@ const products = [
 		brand: 'HammerTech',
 		material: 'Steel',
 		quantity: 1,
+		price: 8.49,
 	},
 	{
 		id: 23,
@@ -389,6 +391,7 @@ const products = [
 		brand: 'Precision Instruments',
 		material: 'Stainless Steel',
 		quantity: 1,
+		price: 29.99,
 	},
 	{
 		id: 24,
@@ -399,6 +402,7 @@ const products = [
 		brand: 'PunchMaster',
 		material: 'Steel',
 		quantity: 1,
+		price: 5.99,
 	},
 	{
 		id: 25,
@@ -409,6 +413,7 @@ const products = [
 		brand: 'SquareMaster',
 		material: 'Aluminum',
 		quantity: 1,
+		price: 34.99,
 	},
 	{
 		id: 26,
@@ -419,6 +424,7 @@ const products = [
 		brand: 'DialPro',
 		material: 'Steel',
 		quantity: 1,
+		price: 19.99,
 	},
 	{
 		id: 27,
@@ -429,6 +435,7 @@ const products = [
 		brand: 'DrillMaster',
 		material: 'Steel',
 		quantity: 1,
+		price: 49.99,
 	},
 	{
 		id: 28,
@@ -439,6 +446,7 @@ const products = [
 		brand: 'EdgeTech',
 		material: 'Steel',
 		quantity: 1,
+		price: 14.99,
 	},
 	{
 		id: 29,
@@ -449,6 +457,7 @@ const products = [
 		brand: 'HammerTech',
 		material: 'Steel',
 		quantity: 1,
+		price: 7.99,
 	},
 	{
 		id: 30,
@@ -459,6 +468,7 @@ const products = [
 		brand: 'Precision Instruments',
 		material: 'Carbide',
 		quantity: 1,
+		price: 39.99,
 	},
 	{
 		id: 31,
@@ -469,6 +479,7 @@ const products = [
 		brand: 'Generic',
 		material: 'Steel',
 		quantity: 1,
+		price: 6.99,
 	},
 	{
 		id: 32,
@@ -479,6 +490,7 @@ const products = [
 		brand: 'Generic',
 		material: 'Steel',
 		quantity: 1,
+		price: 9.99,
 	},
 	{
 		id: 33,
@@ -489,6 +501,7 @@ const products = [
 		brand: 'Generic',
 		material: 'Steel',
 		quantity: 1,
+		price: 3.99,
 	},
 	{
 		id: 34,
@@ -499,6 +512,7 @@ const products = [
 		brand: 'Generic',
 		material: 'Steel',
 		quantity: 1,
+		price: 11.99,
 	},
 	{
 		id: 35,
@@ -509,6 +523,7 @@ const products = [
 		brand: 'Generic',
 		material: 'Steel',
 		quantity: 1,
+		price: 24.99,
 	},
 	{
 		id: 36,
@@ -519,6 +534,7 @@ const products = [
 		brand: 'Generic',
 		material: 'Steel',
 		quantity: 1,
+		price: 8.99,
 	},
 	{
 		id: 37,
@@ -529,6 +545,7 @@ const products = [
 		brand: 'Generic',
 		material: 'Steel',
 		quantity: 1,
+		price: 5.49,
 	},
 	{
 		id: 38,
@@ -539,6 +556,7 @@ const products = [
 		brand: 'Generic',
 		material: 'Steel',
 		quantity: 1,
+		price: 18.99,
 	},
 	{
 		id: 39,
@@ -549,6 +567,7 @@ const products = [
 		brand: 'Generic',
 		material: 'Steel',
 		quantity: 1,
+		price: 10.99,
 	},
 ];
 
