@@ -378,10 +378,7 @@ function Payments() {
 																	}
 																}}
 																onSubmit={(values) => {
-																	if (
-																		values.payment >=
-																		selectedProduct.purchasePrice
-																	) {
+																	if (values.payment >= selectedProduct.price) {
 																		handleSetPaymentEnough(true);
 																		return;
 																	}
