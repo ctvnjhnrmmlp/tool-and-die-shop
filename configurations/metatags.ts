@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 export const metatags: Metadata = {
 	metadataBase: new URL('https://ctvnjhnrmmlp.vercel.app'),
 	title: 'Tool and Die',
-	description: '',
+	description: `Modern Ordering App`,
 	applicationName: 'tool-and-die',
 	generator: 'typescript, react, nextjs, tailwindcss',
 	keywords: `tool-and-die`,
@@ -21,11 +21,11 @@ export const metatags: Metadata = {
 		type: 'website',
 		url: 'https://ctvnjhnrmmlp.vercel.app',
 		title: 'Tool and Die',
-		description: '',
+		description: 'Modern Ordering App',
 		siteName: 'tool-and-die',
 		images: [
 			{
-				url: '/images/tools.png',
+				url: '/images/tool-and-die.png',
 			},
 		],
 	},
@@ -34,11 +34,11 @@ export const metatags: Metadata = {
 		siteId: '',
 		creator: 'Octaviano, Yocor, Escobañas',
 		creatorId: '',
-		description: '',
+		description: 'Modern Ordering App',
 		title: 'Tool and Die',
 		images: [
 			{
-				url: '/images/tools.png',
+				url: '/images/tool-and-die.png',
 			},
 		],
 	},
@@ -50,9 +50,9 @@ export const metatags: Metadata = {
 	formatDetection: {
 		telephone: false,
 	},
-	abstract: '',
+	abstract: 'Modern Ordering App',
 	category: '',
-	classification: '',
+	classification: 'Modern Ordering App',
 };
 
 export default metatags;
