@@ -138,25 +138,6 @@ function Sidenav() {
 										</div>
 									</Link>
 								</div>
-								<div>
-									<Link href={'/timecards'}>
-										<div
-											className='flex gap-4 w-full min-h-[44px] h-full items-center px-4 py-4 rounded-xl cursor-pointer transition-all duration-150 active:scale-[0.98] hover:bg-white hover:text-black'
-											style={{
-												background:
-													pathname == '/timecards' ? '#ffffff' : '#000000',
-												color: pathname == '/timecards' ? '#000000' : '#ffffff',
-											}}
-										>
-											<p className='text-2xl'>
-												<IoTime />
-											</p>
-											<p className='font-light w-full text-xl text-left'>
-												Time Cards
-											</p>
-										</div>
-									</Link>
-								</div>
 							</>
 						)}
 
