@@ -35,13 +35,8 @@ function Requests() {
 	};
 
 	return (
-		<section className='min-h-screen px-8'>
+		<section className='min-h-screen px-8 md:pl-16'>
 			<div className='flex flex-col gap-8'>
-				<div>
-					<h1 className='text-white text-center text-5xl md:text-7xl font-bold'>
-						Requests
-					</h1>
-				</div>
 				<div className='flex flex-col justify-center'>
 					{requestList && (
 						<Tabs

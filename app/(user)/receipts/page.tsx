@@ -3,7 +3,6 @@
 import {
 	Button,
 	Card,
-	Chip,
 	Image,
 	Modal,
 	ModalBody,
@@ -14,11 +13,7 @@ import {
 	Tabs,
 	useDisclosure,
 } from '@nextui-org/react';
-import { Form, Formik } from 'formik';
-import { ZodError, z } from 'zod';
 
-import PaymentModel from '@/database/tool-and-die/models/Payment.model';
-import ReceiptModel from '@/database/tool-and-die/models/Receipt.model';
 import { toolAndDieDatabase } from '@/database/tool-and-die/tool-and-die.database';
 import { Input } from '@nextui-org/react';
 import { useLiveQuery } from 'dexie-react-hooks';
@@ -26,38 +21,25 @@ import { useSession } from 'next-auth/react';
 import { redirect } from 'next/navigation';
 import React from 'react';
 
-function Payments() {
+function Receipts() {
 	const { data: session } = useSession();
 
 	if (!session) redirect('/login');
 
-	const [paymentEnough, setPaymentEnough] = React.useState(false);
 	const { isOpen, onOpen, onOpenChange } = useDisclosure();
 	const [selectedProduct, setSelectedProduct] = React.useState<Product>();
 
-	const paymentList = useLiveQuery(() => toolAndDieDatabase.payments.toArray());
+	const receiptList = useLiveQuery(() => toolAndDieDatabase.receipts.toArray());
 
 	const handleSelectProduct = (item: Product) => {
 		setSelectedProduct(() => item);
-	};
-
-	const handleSetPaymentEnough = (enough: boolean) => {
-		setPaymentEnough(() => enough);
-	};
-
-	const handleAddReceiptProduct = async () => {
-		if (selectedProduct) await ReceiptModel.addReceipt(selectedProduct);
-	};
-
-	const handleDeletePaymentProduct = async () => {
-		if (selectedProduct) await PaymentModel.deletePayment(selectedProduct);
 	};
 
 	return (
 		<section className='min-h-screen px-8 md:pl-16'>
 			<div className='flex flex-col gap-8'>
 				<div className='flex flex-col justify-center'>
-					{paymentList && (
+					{receiptList && (
 						<Tabs
 							aria-label='Products Tabs'
 							className='flex justify-center md:justify-start'
@@ -68,7 +50,7 @@ function Payments() {
 						>
 							<Tab title='All'>
 								<div className='flex flex-row flex-wrap justify-center md:justify-start gap-8 py-8'>
-									{paymentList.map((product) => (
+									{receiptList.map((product) => (
 										<Card
 											isPressable
 											key={product.name}
@@ -91,7 +73,7 @@ function Payments() {
 							</Tab>
 							<Tab title='Equipments'>
 								<div className='flex flex-row flex-wrap justify-center md:justify-start gap-8 py-8'>
-									{paymentList
+									{receiptList
 										.filter((product) => product.type == 'equipment')
 										.map((product) => (
 											<Card
@@ -116,7 +98,7 @@ function Payments() {
 							</Tab>
 							<Tab title='Tools'>
 								<div className='flex flex-row flex-wrap justify-center md:justify-start gap-8 py-8'>
-									{paymentList
+									{receiptList
 										.filter((product) => product.type == 'tool')
 										.map((product) => (
 											<Card
@@ -246,70 +228,6 @@ function Payments() {
 														</p>
 														<p>{selectedProduct.delivery}</p>
 													</div>
-													<div className='flex flex-row items-center space-between justify-between'>
-														<p className='text-md sm:text-lg gap-4'>
-															<span className='font-bold'>Payment</span>
-														</p>
-														<p>
-															<Formik
-																initialValues={{
-																	payment: 0,
-																}}
-																validate={(values) => {
-																	const schema = z.object({
-																		payment: z.number(),
-																	});
-
-																	try {
-																		schema.parse(values);
-																	} catch (error) {
-																		handleSetPaymentEnough(false);
-
-																		if (error instanceof ZodError) {
-																			return error.formErrors.fieldErrors;
-																		}
-																	}
-																}}
-																onSubmit={(values) => {
-																	if (
-																		values.payment >=
-																		selectedProduct.purchasePrice
-																	) {
-																		handleSetPaymentEnough(true);
-																		return;
-																	}
-
-																	handleSetPaymentEnough(false);
-																}}
-															>
-																{(formik) => (
-																	<Form>
-																		<div className='flex flex-col gap-2'>
-																			<Input
-																				isRequired
-																				type='number'
-																				id='payment'
-																				placeholder='0.00'
-																				classNames={{
-																					input: 'font-extrabold',
-																				}}
-																				startContent={
-																					<span className='text-black'>$</span>
-																				}
-																				{...formik.getFieldProps('payment')}
-																			/>
-																			{formik.touched.payment &&
-																			formik.errors.payment ? (
-																				<Chip color='danger' radius='sm'>
-																					{formik.errors.payment}
-																				</Chip>
-																			) : null}
-																		</div>
-																	</Form>
-																)}
-															</Formik>
-														</p>
-													</div>
 												</div>
 											)}
 											{selectedProduct?.type == 'tool' && (
@@ -347,70 +265,6 @@ function Payments() {
 														</p>
 														<p>{selectedProduct.delivery}</p>
 													</div>
-													<div className='flex flex-row items-center space-between justify-between'>
-														<p className='text-md sm:text-lg gap-4'>
-															<span className='font-bold'>Payment</span>
-														</p>
-														<p>
-															<Formik
-																initialValues={{
-																	payment: 0,
-																}}
-																validate={(values) => {
-																	const schema = z.object({
-																		payment: z.number(),
-																	});
-
-																	try {
-																		schema.parse(values);
-																	} catch (error) {
-																		handleSetPaymentEnough(false);
-
-																		if (error instanceof ZodError) {
-																			return error.formErrors.fieldErrors;
-																		}
-																	}
-																}}
-																onSubmit={(values) => {
-																	if (
-																		values.payment >=
-																		selectedProduct.purchasePrice
-																	) {
-																		handleSetPaymentEnough(true);
-																		return;
-																	}
-
-																	handleSetPaymentEnough(false);
-																}}
-															>
-																{(formik) => (
-																	<Form>
-																		<div className='flex flex-col gap-2'>
-																			<Input
-																				isRequired
-																				type='number'
-																				id='payment'
-																				placeholder='0.00'
-																				classNames={{
-																					input: 'font-extrabold',
-																				}}
-																				startContent={
-																					<span className='text-black'>$</span>
-																				}
-																				{...formik.getFieldProps('payment')}
-																			/>
-																			{formik.touched.payment &&
-																			formik.errors.payment ? (
-																				<Chip color='danger' radius='sm'>
-																					{formik.errors.payment}
-																				</Chip>
-																			) : null}
-																		</div>
-																	</Form>
-																)}
-															</Formik>
-														</p>
-													</div>
 												</div>
 											)}
 										</ModalBody>
@@ -418,18 +272,6 @@ function Payments() {
 											<Button className='bg-white text-black' onPress={onClose}>
 												Close
 											</Button>
-											{paymentEnough && (
-												<Button
-													onPress={() => {
-														handleAddReceiptProduct();
-														handleDeletePaymentProduct();
-														onClose();
-													}}
-													className='bg-white text-black'
-												>
-													Release Product
-												</Button>
-											)}
 										</ModalFooter>
 									</>
 								)}
@@ -442,4 +284,4 @@ function Payments() {
 	);
 }
 
-export default Payments;
+export default Receipts;

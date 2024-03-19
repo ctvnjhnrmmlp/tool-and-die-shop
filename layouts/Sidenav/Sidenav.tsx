@@ -8,6 +8,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { BsTools } from 'react-icons/bs';
 import { FaSackDollar } from 'react-icons/fa6';
+import { HiNewspaper } from 'react-icons/hi';
+import { IoTime } from 'react-icons/io5';
 
 function Sidenav() {
 	const { data: session } = useSession();
@@ -27,25 +29,6 @@ function Sidenav() {
 											style={{
 												background: pathname == '/' ? '#ffffff' : '#000000',
 												color: pathname == '/' ? '#000000' : '#ffffff',
-											}}
-										>
-											<p className='text-2xl'>
-												<FaHome />
-											</p>
-											<p className='font-light w-full text-xl text-left'>
-												Overview
-											</p>
-										</div>
-									</Link>
-								</div>
-								<div>
-									<Link href={'/products'}>
-										<div
-											className='flex gap-4 w-full min-h-[44px] h-full items-center px-4 py-4 rounded-xl cursor-pointer transition-all duration-150 active:scale-[0.98] hover:bg-white hover:text-black'
-											style={{
-												background:
-													pathname == '/products' ? '#ffffff' : '#000000',
-												color: pathname == '/products' ? '#000000' : '#ffffff',
 											}}
 										>
 											<p className='text-2xl'>
@@ -113,6 +96,25 @@ function Sidenav() {
 										</div>
 									</Link>
 								</div>
+								<div>
+									<Link href={'/receipts'}>
+										<div
+											className='flex gap-4 w-full min-h-[44px] h-full items-center px-4 py-4 rounded-xl cursor-pointer transition-all duration-150 active:scale-[0.98] hover:bg-white hover:text-black'
+											style={{
+												background:
+													pathname == '/receipts' ? '#ffffff' : '#000000',
+												color: pathname == '/receipts' ? '#000000' : '#ffffff',
+											}}
+										>
+											<p className='text-2xl'>
+												<HiNewspaper />
+											</p>
+											<p className='font-light w-full text-xl text-left'>
+												Receipts
+											</p>
+										</div>
+									</Link>
+								</div>
 							</>
 						)}
 
@@ -128,29 +130,29 @@ function Sidenav() {
 											}}
 										>
 											<p className='text-2xl'>
-												<FaHome />
+												<FaBox />
 											</p>
 											<p className='font-light w-full text-xl text-left'>
-												Overview
+												Orders
 											</p>
 										</div>
 									</Link>
 								</div>
 								<div>
-									<Link href={'/orders'}>
+									<Link href={'/timecards'}>
 										<div
 											className='flex gap-4 w-full min-h-[44px] h-full items-center px-4 py-4 rounded-xl cursor-pointer transition-all duration-150 active:scale-[0.98] hover:bg-white hover:text-black'
 											style={{
 												background:
-													pathname == '/orders' ? '#ffffff' : '#000000',
-												color: pathname == '/orders' ? '#000000' : '#ffffff',
+													pathname == '/timecards' ? '#ffffff' : '#000000',
+												color: pathname == '/timecards' ? '#000000' : '#ffffff',
 											}}
 										>
 											<p className='text-2xl'>
-												<FaBox />
+												<IoTime />
 											</p>
 											<p className='font-light w-full text-xl text-left'>
-												Orders
+												Time Cards
 											</p>
 										</div>
 									</Link>
@@ -159,58 +161,35 @@ function Sidenav() {
 						)}
 
 						{session?.user?.name == 'Worker' && (
-							<>
-								<div>
-									<Link href={'/orders'}>
-										<div
-											className='flex gap-4 w-full min-h-[44px] h-full items-center px-4 py-4 rounded-xl cursor-pointer transition-all duration-150 active:scale-[0.98] hover:bg-white hover:text-black'
-											style={{
-												background:
-													pathname == '/orders' ? '#ffffff' : '#000000',
-												color: pathname == '/orders' ? '#000000' : '#ffffff',
-											}}
-										>
-											<p className='text-2xl'>
-												<FaBox />
-											</p>
-											<p className='font-light w-full text-xl text-left'>
-												Orders
-											</p>
-										</div>
-									</Link>
-								</div>
-								<div>
-									<Link href={'/requests'}>
-										<div
-											className='flex gap-4 w-full min-h-[44px] h-full items-center px-4 py-4 rounded-xl cursor-pointer transition-all duration-150 active:scale-[0.98] hover:bg-white hover:text-black'
-											style={{
-												background:
-													pathname == '/requests' ? '#ffffff' : '#000000',
-												color: pathname == '/requests' ? '#000000' : '#ffffff',
-											}}
-										>
-											<p className='text-2xl'>
-												<FaBox />
-											</p>
-											<p className='font-light w-full text-xl text-left'>
-												Requests
-											</p>
-										</div>
-									</Link>
-								</div>
-							</>
+							<div>
+								<Link href={'/'}>
+									<div
+										className='flex gap-4 w-full min-h-[44px] h-full items-center px-4 py-4 rounded-xl cursor-pointer transition-all duration-150 active:scale-[0.98] hover:bg-white hover:text-black'
+										style={{
+											background: pathname == '/' ? '#ffffff' : '#000000',
+											color: pathname == '/' ? '#000000' : '#ffffff',
+										}}
+									>
+										<p className='text-2xl'>
+											<FaBox />
+										</p>
+										<p className='font-light w-full text-xl text-left'>
+											Orders
+										</p>
+									</div>
+								</Link>
+							</div>
 						)}
 
 						{session?.user?.name == 'CIS' && (
 							<>
 								<div>
-									<Link href={'/orders'}>
+									<Link href={'/'}>
 										<div
 											className='flex gap-4 w-full min-h-[44px] h-full items-center px-4 py-4 rounded-xl cursor-pointer transition-all duration-150 active:scale-[0.98] hover:bg-white hover:text-black'
 											style={{
-												background:
-													pathname == '/orders' ? '#ffffff' : '#000000',
-												color: pathname == '/orders' ? '#000000' : '#ffffff',
+												background: pathname == '/' ? '#ffffff' : '#000000',
+												color: pathname == '/' ? '#000000' : '#ffffff',
 											}}
 										>
 											<p className='text-2xl'>
@@ -224,91 +203,6 @@ function Sidenav() {
 								</div>
 							</>
 						)}
-
-						{/* <div>
-							<Link href={'/overview/'}>
-								<div className='flex gap-4 w-full min-h-[44px] h-full items-center px-4 py-4 rounded-xl cursor-pointer transition-all duration-150 active:scale-[0.98] hover:bg-white hover:text-black'>
-									<p className='text-2xl'>
-										<FaHome />
-									</p>
-									<p className='font-light w-full text-xl text-left'>
-										Overview
-									</p>
-								</div>
-							</Link>
-						</div>
-
-						<div>
-							<Link href={'/orders/'}>
-								<div className='flex gap-4 w-full min-h-[44px] h-full items-center px-4 py-4 rounded-xl cursor-pointer transition-all duration-150 active:scale-[0.98] hover:bg-white hover:text-black'>
-									<p className='text-2xl'>
-										<FaFileInvoice />
-									</p>
-									<p className='font-light w-full text-xl text-left'>Orders</p>
-								</div>
-							</Link>
-						</div>
-
-						<div>
-							<Link href={'/jobs/'}>
-								<div className='flex gap-4 w-full min-h-[44px] h-full items-center px-4 py-4 rounded-xl cursor-pointer transition-all duration-150 active:scale-[0.98] hover:bg-white hover:text-black'>
-									<p className='text-2xl'>
-										<FaBox />
-									</p>
-									<p className='font-light w-full text-xl text-left'>Jobs</p>
-								</div>
-							</Link>
-						</div>
-
-						<div>
-							<Link href={'/jobs/'}>
-								<div className='flex gap-4 w-full min-h-[44px] h-full items-center px-4 py-4 rounded-xl cursor-pointer transition-all duration-150 active:scale-[0.98] hover:bg-white hover:text-black'>
-									<p className='text-2xl'>
-										<FaAddressCard />
-									</p>
-									<p className='font-light w-full text-xl text-left'>
-										Time Cards
-									</p>
-								</div>
-							</Link>
-						</div>
-
-						<div>
-							<Link href={'/inventory/'}>
-								<div className='flex gap-4 w-full min-h-[44px] h-full items-center px-4 py-4 rounded-xl cursor-pointer transition-all duration-150 active:scale-[0.98] hover:bg-white hover:text-black'>
-									<p className='text-2xl'>
-										<FaStore />
-									</p>
-									<p className='font-light w-full text-xl text-left'>
-										Inventory
-									</p>
-								</div>
-							</Link>
-						</div>
-
-						<div>
-							<Link href={'/validate/'}>
-								<div className='flex gap-4 w-full min-h-[44px] h-full items-center px-4 py-4 rounded-xl cursor-pointer transition-all duration-150 active:scale-[0.98] hover:bg-white hover:text-black'>
-									<p className='text-2xl'>
-										<FaCheckCircle />
-									</p>
-									<p className='font-light w-full text-xl text-left'>
-										Validate
-									</p>
-								</div>
-							</Link>
-						</div>
-
-						<div>
-							<Link href={'/bill/'}>
-								<div className='flex gap-4 w-full min-h-[44px] h-full items-center px-4 py-4 rounded-xl cursor-pointer transition-all duration-150 active:scale-[0.98] hover:bg-white hover:text-black'>
-									<p className='text-2xl'>
-										<FaMoneyBillAlt />
-									</p>
-									<p className='font-light w-full text-xl text-left'>Bill</p>
-								</div>
-							</Link>
-						</div> */}
 					</div>
 				</nav>
 			</ScrollShadow>

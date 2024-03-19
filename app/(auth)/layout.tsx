@@ -23,7 +23,9 @@ function AuthLayout({
 				</div>
 			</nav>
 
-			<main className='dark text-foreground bg-background'>{children}</main>
+			<main className='dark text-foreground bg-background no-scrollbar'>
+				{children}
+			</main>
 		</>
 	);
 }

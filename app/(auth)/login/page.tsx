@@ -67,6 +67,7 @@ function Login() {
 						if (!res?.error) {
 							if (productList?.length == 0) {
 								toolAndDieDatabase.products
+									// @ts-ignore
 									.bulkPut(products)
 									.then(function () {
 										console.log('Data added successfully!');
@@ -97,7 +98,6 @@ function Login() {
 							<div className='flex flex-col gap-2'>
 								<Input
 									isRequired
-									isClearable
 									type='text'
 									id='username'
 									placeholder='Username'
@@ -123,7 +123,6 @@ function Login() {
 							<div className='flex flex-col gap-2'>
 								<Input
 									isRequired
-									isClearable
 									type='password'
 									id='password'
 									placeholder='Password'

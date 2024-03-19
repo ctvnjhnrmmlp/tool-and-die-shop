@@ -18,6 +18,7 @@ import ApproveModel from '@/database/tool-and-die/models/Approve.model';
 import ConfirmModel from '@/database/tool-and-die/models/Confirm.model';
 import FinalModel from '@/database/tool-and-die/models/Final.model';
 import OrderModel from '@/database/tool-and-die/models/Order.model';
+import PaymentModel from '@/database/tool-and-die/models/Payment.model';
 import ProcessModel from '@/database/tool-and-die/models/Process.model';
 import RequestModel from '@/database/tool-and-die/models/Request.model';
 import { toolAndDieDatabase } from '@/database/tool-and-die/tool-and-die.database';
@@ -91,14 +92,13 @@ function Orders() {
 		if (selectedProduct) await ApproveModel.deleteProduct(selectedProduct);
 	};
 
+	const handleAddPaymentProduct = async () => {
+		if (selectedProduct) await PaymentModel.addPayment(selectedProduct);
+	};
+
 	return (
-		<section className='min-h-screen px-8'>
+		<section className='min-h-screen px-8 md:pl-16'>
 			<div className='flex flex-col gap-8'>
-				<div>
-					<h1 className='text-white text-center text-5xl md:text-7xl font-bold'>
-						Orders
-					</h1>
-				</div>
 				<div className='flex flex-col justify-center'>
 					{orderList &&
 						requestList &&
@@ -108,14 +108,14 @@ function Orders() {
 						approveList && (
 							<Tabs
 								aria-label='Address Tabs'
-								className='flex justify-center'
+								className='flex justify-center md:justify-start'
 								classNames={{
 									tabList: 'bg-black',
 									tab: 'text-2xl lg:text-3xl p-6 font-extrabold',
 								}}
 							>
 								<Tab title='Pending'>
-									<div className='flex flex-row flex-wrap justify-center gap-8 py-8'>
+									<div className='flex flex-row flex-wrap justify-center md:justify-start gap-8 py-8'>
 										{orderList
 											.filter((order) => order.status == 'pending')
 											.map((order) => (
@@ -140,7 +140,7 @@ function Orders() {
 									</div>
 								</Tab>
 								<Tab title='Requested'>
-									<div className='flex flex-row flex-wrap justify-center gap-8 py-8'>
+									<div className='flex flex-row flex-wrap justify-center md:justify-start gap-8 py-8'>
 										{requestList.map((request) => (
 											<Card
 												isPressable
@@ -163,7 +163,7 @@ function Orders() {
 									</div>
 								</Tab>
 								<Tab title='Confirmed'>
-									<div className='flex flex-row flex-wrap justify-center gap-8 py-8'>
+									<div className='flex flex-row flex-wrap justify-center md:justify-start gap-8 py-8'>
 										{confirmList.map((confirm) => (
 											<Card
 												isPressable
@@ -186,7 +186,7 @@ function Orders() {
 									</div>
 								</Tab>
 								<Tab title='Processing'>
-									<div className='flex flex-row flex-wrap justify-center gap-8 py-8'>
+									<div className='flex flex-row flex-wrap justify-center md:justify-start gap-8 py-8'>
 										{processList.map((process) => (
 											<Card
 												isPressable
@@ -209,7 +209,7 @@ function Orders() {
 									</div>
 								</Tab>
 								<Tab title='Finalizing'>
-									<div className='flex flex-row flex-wrap justify-center gap-8 py-8'>
+									<div className='flex flex-row flex-wrap justify-center md:justify-start gap-8 py-8'>
 										{finalList.map((final) => (
 											<Card
 												isPressable
@@ -232,7 +232,7 @@ function Orders() {
 									</div>
 								</Tab>
 								<Tab title='Approved'>
-									<div className='flex flex-row flex-wrap justify-center gap-8 py-8'>
+									<div className='flex flex-row flex-wrap justify-center md:justify-start gap-8 py-8'>
 										{approveList.map((approve) => (
 											<Card
 												isPressable
@@ -258,7 +258,7 @@ function Orders() {
 						)}
 				</div>
 
-				<div>
+				{/* <div>
 					{session.user?.name == 'Admin' &&
 						orderList &&
 						orderList?.length >= 1 && (
@@ -298,13 +298,12 @@ function Orders() {
 													onPress={() => {
 														handleRequestProduct();
 														handleDeletePendingProduct();
-														setSelectedProduct({
-															id: 0,
-															name: '',
-															src: '',
-															status: '',
-															type: '',
-														});
+														// setSelectedProduct({
+														// 	name: '',
+														// 	src: '',
+														// 	status: '',
+														// 	type: '',
+														// });
 														onClose();
 													}}
 													className='bg-white text-black'
@@ -317,8 +316,180 @@ function Orders() {
 								</ModalContent>
 							</Modal>
 						)}
+				</div> */}
+
+				<div>
+					{session.user?.name == 'Customer' &&
+						approveList &&
+						approveList.length >= 1 && (
+							<Modal
+								isDismissable={false}
+								hideCloseButton={true}
+								isOpen={isOpen}
+								onOpenChange={() => onOpenChange()}
+								backdrop='blur'
+								className='bg-black'
+							>
+								<ModalContent>
+									{(onClose) => (
+										<>
+											<ModalHeader className='flex justify-center items-center'>
+												<p className='text-2xl font-bold text-center'>
+													{selectedProduct?.name}
+												</p>
+											</ModalHeader>
+											<ModalBody className='flex gap-4'>
+												<div className='flex justify-center'>
+													<Image
+														alt={selectedProduct?.name}
+														className='object-cover'
+														src={`/images/${selectedProduct?.src}`}
+														width={350}
+													/>
+												</div>
+												{selectedProduct?.type == 'equipment' && (
+													<div className='flex flex-col'>
+														<div className='flex flex-row items-center space-between justify-between'>
+															<p className='text-md sm:text-lg gap-4'>
+																<span className='font-bold'>Manufacturer</span>
+															</p>
+															<p>{selectedProduct.manufacturer}</p>
+														</div>
+														<div className='flex flex-row items-center space-between justify-between'>
+															<p className='text-md sm:text-lg gap-4'>
+																<span className='font-bold'>Model</span>
+															</p>
+															<p>{selectedProduct.modelNumber}</p>
+														</div>
+														<div className='flex flex-row items-center space-between justify-between'>
+															<p className='text-md sm:text-lg gap-4'>
+																<span className='font-bold'>Manufactured</span>
+															</p>
+															<p>{selectedProduct.yearManufactured}</p>
+														</div>
+														<div className='flex flex-row items-center space-between justify-between'>
+															<p className='text-md sm:text-lg gap-4'>
+																<span className='font-bold'>Location</span>
+															</p>
+															<p>{selectedProduct.location}</p>
+														</div>
+														<div className='flex flex-row items-center space-between justify-between'>
+															<p className='text-md sm:text-lg gap-4'>
+																<span className='font-bold'>Purchased</span>
+															</p>
+															<p>{selectedProduct.purchaseDate}</p>
+														</div>
+														<div className='flex flex-row items-center space-between justify-between'>
+															<p className='text-md sm:text-lg gap-4'>
+																<span className='font-bold'>Price</span>
+															</p>
+															<p>{selectedProduct.purchasePrice}</p>
+														</div>
+														<div className='flex flex-row items-center space-between justify-between'>
+															<p className='text-md sm:text-lg gap-4'>
+																<span className='font-bold'>Warranty</span>
+															</p>
+															<p>{selectedProduct.warrantyExpires}</p>
+														</div>
+														<div className='flex flex-row items-center space-between justify-between'>
+															<p className='text-md sm:text-lg gap-4'>
+																<span className='font-bold'>Power</span>
+															</p>
+															<p>{selectedProduct.powerRequirements}</p>
+														</div>
+														<div className='flex flex-row items-center space-between justify-between'>
+															<p className='text-md sm:text-lg gap-4'>
+																<span className='font-bold'>Weight</span>
+															</p>
+															<p>{selectedProduct.weight}</p>
+														</div>
+														<div className='flex flex-row items-center space-between justify-between'>
+															<p className='text-md sm:text-lg gap-4'>
+																<span className='font-bold'>Usage</span>
+															</p>
+															<p>{selectedProduct.usageHours}</p>
+														</div>
+														<div className='flex flex-row items-center space-between justify-between'>
+															<p className='text-md sm:text-lg gap-4'>
+																<span className='font-bold'>Duration</span>
+															</p>
+															<p>
+																{selectedProduct.processStart} to{' '}
+																{selectedProduct.processEnd}
+															</p>
+														</div>
+														<div className='flex flex-row items-center space-between justify-between'>
+															<p className='text-md sm:text-lg gap-4'>
+																<span className='font-bold'>Delivery</span>
+															</p>
+															<p>{selectedProduct.delivery}</p>
+														</div>
+													</div>
+												)}
+												{selectedProduct?.type == 'tool' && (
+													<div className='flex flex-col'>
+														<div className='flex flex-row items-center space-between justify-between'>
+															<p className='text-md sm:text-lg gap-4'>
+																<span className='font-bold'>Brand</span>
+															</p>
+															<p>{selectedProduct.brand}</p>
+														</div>
+														<div className='flex flex-row items-center space-between justify-between'>
+															<p className='text-md sm:text-lg gap-4'>
+																<span className='font-bold'>Material</span>
+															</p>
+															<p>{selectedProduct.material}</p>
+														</div>
+														<div className='flex flex-row items-center space-between justify-between'>
+															<p className='text-md sm:text-lg gap-4'>
+																<span className='font-bold'>Quantity</span>
+															</p>
+															<p>{selectedProduct.quantity}</p>
+														</div>
+														<div className='flex flex-row items-center space-between justify-between'>
+															<p className='text-md sm:text-lg gap-4'>
+																<span className='font-bold'>Duration</span>
+															</p>
+															<p>
+																{selectedProduct.processStart} to{' '}
+																{selectedProduct.processEnd}
+															</p>
+														</div>
+														<div className='flex flex-row items-center space-between justify-between'>
+															<p className='text-md sm:text-lg gap-4'>
+																<span className='font-bold'>Delivery</span>
+															</p>
+															<p>{selectedProduct.delivery}</p>
+														</div>
+													</div>
+												)}
+											</ModalBody>
+											<ModalFooter>
+												<Button
+													className='bg-white text-black'
+													onPress={onClose}
+												>
+													Close
+												</Button>
+												<Button
+													onPress={() => {
+														handleAddPaymentProduct();
+														handleDeleteApprovedProduct();
+														onClose();
+													}}
+													className='bg-white text-black'
+												>
+													Pay Product
+												</Button>
+											</ModalFooter>
+										</>
+									)}
+								</ModalContent>
+							</Modal>
+						)}
 				</div>
 
+				{/* 
 				<div>
 					{session.user?.name == 'Worker' &&
 						requestList &&
@@ -359,13 +530,13 @@ function Orders() {
 													onPress={() => {
 														handleConfirmProduct();
 														handleDeleteRequestedProduct();
-														setSelectedProduct({
-															id: 0,
-															name: '',
-															src: '',
-															status: '',
-															type: '',
-														});
+														// setSelectedProduct({
+														// 	id: 0,
+														// 	name: '',
+														// 	src: '',
+														// 	status: '',
+														// 	type: '',
+														// });
 														onClose();
 													}}
 													className='bg-white text-black'
@@ -420,13 +591,13 @@ function Orders() {
 													onPress={() => {
 														handleProcessProduct();
 														handleDeleteConfirmedProduct();
-														setSelectedProduct({
-															id: 0,
-															name: '',
-															src: '',
-															status: '',
-															type: '',
-														});
+														// setSelectedProduct({
+														// 	id: 0,
+														// 	name: '',
+														// 	src: '',
+														// 	status: '',
+														// 	type: '',
+														// });
 														onClose();
 													}}
 													className='bg-white text-black'
@@ -481,13 +652,13 @@ function Orders() {
 													onPress={() => {
 														handleFinalizeProduct();
 														handleDeleteProcessedProduct();
-														setSelectedProduct({
-															id: 0,
-															name: '',
-															src: '',
-															status: '',
-															type: '',
-														});
+														// setSelectedProduct({
+														// 	id: 0,
+														// 	name: '',
+														// 	src: '',
+														// 	status: '',
+														// 	type: '',
+														// });
 														onClose();
 													}}
 													className='bg-white text-black'
@@ -542,13 +713,13 @@ function Orders() {
 													onPress={() => {
 														handleApproveProduct();
 														handleDeleteFinalizedProduct();
-														setSelectedProduct({
-															id: 0,
-															name: '',
-															src: '',
-															status: '',
-															type: '',
-														});
+														// setSelectedProduct({
+														// 	id: 0,
+														// 	name: '',
+														// 	src: '',
+														// 	status: '',
+														// 	type: '',
+														// });
 														onClose();
 													}}
 													className='bg-white text-black'
@@ -561,7 +732,7 @@ function Orders() {
 								</ModalContent>
 							</Modal>
 						)}
-				</div>
+				</div> */}
 			</div>
 		</section>
 	);

@@ -10,25 +10,41 @@ export class ToolAndDieDatabase extends Dexie {
 	finals!: Table<Product>;
 	approves!: Table<Product>;
 	receipts!: Table<Product>;
+	payments!: Table<Product>;
 	timecards!: Table<Product>;
-	jobs!: Table<Product>;
-	notifications!: Table<Notification>;
+	customerNotifications!: Table<CustomerNotif>;
+	adminNotifications!: Table<AdminNotif>;
+	workerNotifications!: Table<WorkerNotif>;
+	cisNotifications!: Table<CISNotif>;
 
 	constructor() {
 		super('ToolAndDieDatabase');
 		this.version(1).stores({
-			products: '++id, name, src, type, status',
-			cart: '++id, name, src, type, status',
-			orders: '++id, name, src, type, status',
-			requests: '++id, name, src, type, status',
-			confirms: '++id, name, src, type, status',
-			processes: '++id, name, src, type, status',
-			finals: '++id, name, src, type, status',
-			approves: '++id, name, src, type, status',
-			receipts: '++id, name, src, type, status',
-			timecards: '++id, name, src, type, status',
-			jobs: '++id, name, src, type, status',
-			notifications: '++id, name, status, user',
+			products:
+				'++id, name, src, type, status, processStart, processEnd, delivery, manufacturer, modelNumber, yearManufactured, location, purchaseDate, purchasePrice, warrantyExpires, powerRequirements, weight, usageHours, brand, material, quantity',
+			cart: '++id, name, src, type, status, processStart, processEnd, delivery, manufacturer, modelNumber, yearManufactured, location, purchaseDate, purchasePrice, warrantyExpires, powerRequirements, weight, usageHours, brand, material, quantity',
+			orders:
+				'++id, name, src, type, status, processStart, processEnd, delivery, manufacturer, modelNumber, yearManufactured, location, purchaseDate, purchasePrice, warrantyExpires, powerRequirements, weight, usageHours, brand, material, quantity',
+			requests:
+				'++id, name, src, type, status, processStart, processEnd, delivery, manufacturer, modelNumber, yearManufactured, location, purchaseDate, purchasePrice, warrantyExpires, powerRequirements, weight, usageHours, brand, material, quantity',
+			confirms:
+				'++id, name, src, type, status, processStart, processEnd, delivery, manufacturer, modelNumber, yearManufactured, location, purchaseDate, purchasePrice, warrantyExpires, powerRequirements, weight, usageHours, brand, material, quantity',
+			processes:
+				'++id, name, src, type, status, processStart, processEnd, delivery, manufacturer, modelNumber, yearManufactured, location, purchaseDate, purchasePrice, warrantyExpires, powerRequirements, weight, usageHours, brand, material, quantity',
+			finals:
+				'++id, name, src, type, status, processStart, processEnd, delivery, manufacturer, modelNumber, yearManufactured, location, purchaseDate, purchasePrice, warrantyExpires, powerRequirements, weight, usageHours, brand, material, quantity',
+			approves:
+				'++id, name, src, type, status, processStart, processEnd, delivery, manufacturer, modelNumber, yearManufactured, location, purchaseDate, purchasePrice, warrantyExpires, powerRequirements, weight, usageHours, brand, material, quantity',
+			receipts:
+				'++id, name, src, type, status, processStart, processEnd, delivery, manufacturer, modelNumber, yearManufactured, location, purchaseDate, purchasePrice, warrantyExpires, powerRequirements, weight, usageHours, brand, material, quantity',
+			payments:
+				'++id, name, src, type, status, processStart, processEnd, delivery, manufacturer, modelNumber, yearManufactured, location, purchaseDate, purchasePrice, warrantyExpires, powerRequirements, weight, usageHours, brand, material, quantity',
+			timecards:
+				'++id, name, src, type, status, processStart, processEnd, delivery, manufacturer, modelNumber, yearManufactured, location, purchaseDate, purchasePrice, warrantyExpires, powerRequirements, weight, usageHours, brand, material, quantity',
+			customerNotifications: '++id, name, type',
+			adminNotifications: '++id, name, type',
+			workerNotifications: '++id, name, type',
+			cisNotifications: '++id, name, type',
 		});
 	}
 }
